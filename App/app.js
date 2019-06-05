@@ -50,30 +50,29 @@ class Game{
         this.testGeo = new THREE.SphereGeometry(10, 10, 10);
         this.testMat = new THREE.MeshPhongMaterial({color: 'green'});
 
-        var middleLights = [];
-        console.log(middleLights);
-        var topBottomLights = [];
-        var topCornerLights = [];
-        var bottomCornerLights = [];
-        var topSideLights = [];
-        var bottomSideLights = [];
+        this.middleLights = [];
+        console.log(this.middleLights);
+        this.topBottomLights = [];
+        this.topCornerLights = [];
+        this.bottomCornerLights = [];
+        this.topSideLights = [];
+        this.bottomSideLights = [];
         this.lightOnSun =[
-            middleLights,
-            topBottomLights,
-            topCornerLights,
-            bottomCornerLights,
-            topSideLights,
-            bottomSideLights
+            this.middleLights,
+            this.topBottomLights,
+            this.topCornerLights,
+            this.bottomCornerLights,
+            this.topSideLights,
+            this.bottomSideLights
         ];
 
         for(var i = 0; i < 8; i += 1) {
-            middleLights.push(new THREE.Mesh(game.testGeo, game.testMat));
-            middleLights[i].position.y = 0;
-            middleLights[i].position.x = 100 * Math.sin([i] * Math.PI / 4);
-            middleLights[i].position.z = -100 * Math.cos([i] * Math.PI / 4);
-            console.log(middleLights[i].position.x, middleLights[i].position.z);
+            game.middleLights.push(new THREE.Mesh(game.testGeo, game.testMat));
+            game.middleLights[i].position.y = 0;
+            game.middleLights[i].position.x = 100 * Math.sin([i] * Math.PI / 4);
+            game.middleLights[i].position.z = -100 * Math.cos([i] * Math.PI / 4);
+            console.log(game.middleLights[i].position.x, game.middleLights[i].position.z);
             console.log('works');
-            game.scene.add(middleLights[i]);
         }
 
         // this.lightOnSun[0].position.set(100, 0, 0);
@@ -96,11 +95,11 @@ class Game{
         // Not in Scene
         // this.ambient = new THREE.AmbientLight(0xffffff, 1);
 
-        this.floorGeometry = new THREE.PlaneGeometry(1000, 1000);
-        this.floorMaterial = new THREE.MeshPhongMaterial({color: 'white'});
-        this.floorMesh = new THREE.Mesh(this.floorGeometry, this.floorMaterial);
-        this.floorMesh.rotation.x = -Math.PI / 2;
-        this.floorMesh.position.y = -200;
+        // this.floorGeometry = new THREE.PlaneGeometry(1000, 1000);
+        // this.floorMaterial = new THREE.MeshPhongMaterial({color: 'white'});
+        // this.floorMesh = new THREE.Mesh(this.floorGeometry, this.floorMaterial);
+        // this.floorMesh.rotation.x = -Math.PI / 2;
+        // this.floorMesh.position.y = -200;
 
         this.time = 0;
 
@@ -116,8 +115,13 @@ class Game{
         game.scene.add(game.sunMesh);
         game.scene.add(game.sunLight);
         game.scene.add(game.light);
-        game.scene.add(game.floorMesh);
 
+        game.middleLights.forEach(light => {
+            game.scene.add(light);
+        })
+        // game.scene.add(game.floorMesh);
+
+        // Planet Initial Positions
         var mercuryPosX = -100;
         var mercuryPosY = 0;
         var mercuryPosZ = 0;
