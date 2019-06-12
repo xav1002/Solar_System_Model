@@ -1,7 +1,7 @@
 class Game{
     constructor(){
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 10000);
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100000);
         this.camera.position.z = 400;
 
         this.textureLoader = new THREE.TextureLoader();
@@ -55,7 +55,7 @@ class Game{
 
         this.asteroids = [];
         this.asteroidTexture = this.textureLoader.load('./assets/Asteroid_Texture.jpg');
-        for(var i = 0; i < 400; i += 1) {
+        for(var i = 0; i < 1200; i += 1) {
             game.asteroids.push(new THREE.Mesh(
                 new THREE.SphereGeometry(10 * Math.random(), 5 * Math.random(), 5 * Math.random()),
                 new THREE.MeshPhongMaterial({map: game.asteroidTexture})
@@ -63,8 +63,8 @@ class Game{
 
             // Limit positions to belt area
             game.asteroids[i].position.y = (Math.random() * 10) - 5;
-            game.asteroids[i].position.x = (1100 * Math.sin(i * Math.PI / 200) + (Math.random() * 200 - 100));
-            game.asteroids[i].position.z = (1100 * Math.cos(i * Math.PI / 200) + (Math.random() * 200 - 100));
+            game.asteroids[i].position.x = (1100 * Math.sin(i * Math.PI / 600) + (Math.random() * 600 - 300));
+            game.asteroids[i].position.z = (1100 * Math.cos(i * Math.PI / 600) + (Math.random() * 600 - 300));
         }
 
         // Outer Planets
@@ -172,6 +172,8 @@ class Game{
 
         this.planets = [];
 
+        this.distanceFactor;
+
         this.init();
 
     }
@@ -211,49 +213,51 @@ class Game{
         );
 
         // Planet Initial Positions
-        var mercuryPosX = -240;
+        game.distanceFactor = 120;
+
+        var mercuryPosX = 1 * game.distanceFactor;
         var mercuryPosY = 0;
         var mercuryPosZ = 0;
         game.mercuryMesh.position.set(mercuryPosX, mercuryPosY, mercuryPosZ);
 
-        var venusPosX = -400;
+        var venusPosX = 1.87 * game.distanceFactor;
         var venusPosY = 0;
         var venusPosZ = 0;
         game.venusMesh.position.set(venusPosX, venusPosY, venusPosZ);
 
-        var earthPosX = -600;
+        var earthPosX = 2.58 * game.distanceFactor;
         var earthPosY = 0;
         var earthPosZ = 0;
         game.earthMesh.position.set(earthPosX, earthPosY, earthPosZ);
 
-        var marsPosX = -800;
+        var marsPosX = 3.23 * game.distanceFactor;
         var marsPosY = 0;
         var marsPosZ = 0;
         game.marsMesh.position.set(marsPosX, marsPosY, marsPosZ);
 
-        var jupiterPosX = -1400;
+        var jupiterPosX = 21.61 * game.distanceFactor;
         var jupiterPosY = 0;
         var jupiterPosZ = 0;
         game.jupiterMesh.position.set(jupiterPosX, jupiterPosY, jupiterPosZ);
 
-        var saturnPosX = -1600;
+        var saturnPosX = 24.61 * game.distanceFactor;
         var saturnPosY = 0;
         var saturnPosZ = 0;
         game.saturnMesh.position.set(saturnPosX, saturnPosY, saturnPosZ);
         game.saturnRingMesh.position.set(saturnPosX, saturnPosY, saturnPosZ);
 
-        var uranusPosX = -1800;
+        var uranusPosX = 50 * game.distanceFactor;
         var uranusPosY = 0;
         var uranusPosZ = 0;
         game.uranusMesh.position.set(uranusPosX, uranusPosY, uranusPosZ);
         game.uranusRingMesh.position.set(uranusPosX, uranusPosY, uranusPosZ);
 
-        var neptunePosX = -2000;
+        var neptunePosX = 77.72 * game.distanceFactor;
         var neptunePosY = 0;
         var neptunePosZ = 0;
         game.neptuneMesh.position.set(neptunePosX, neptunePosY, neptunePosZ);
 
-        var plutoPosX = -2200;
+        var plutoPosX = 101.94 * game.distanceFactor;
         var plutoPosY = 0;
         var plutoPosZ = 0;
         game.plutoMesh.position.set(plutoPosX, plutoPosY, plutoPosZ);
@@ -270,58 +274,58 @@ class Game{
 
         const game = this;
 
-        var revolutionSpeed = 65;
+        var revolutionSpeed = 2;
 
         // Mercury orbit
-        game.mercuryMesh.position.x = 240 * Math.sin(game.time / 50);
+        game.mercuryMesh.position.x = 1 * game.distanceFactor * Math.sin(game.time / 10 * revolutionSpeed);
         // game.mercuryMesh.translateY(1 * Math.cos(game.time / 10));
-        game.mercuryMesh.position.z = 240 * Math.cos(game.time / 50);
+        game.mercuryMesh.position.z = 1 * game.distanceFactor * Math.cos(game.time / 10 * revolutionSpeed);
 
         // Venus orbit
-        game.venusMesh.position.x = 400 * Math.sin(game.time / revolutionSpeed);
+        game.venusMesh.position.x = 1.87 * game.distanceFactor * Math.sin(game.time / 25.5 * revolutionSpeed);
         // game.venusMesh.translateY(3 * Math.cos(game.time / 12));
-        game.venusMesh.position.z = 400 * Math.cos(game.time / revolutionSpeed);
+        game.venusMesh.position.z = 1.87 * game.distanceFactor * Math.cos(game.time / 25.5 * revolutionSpeed);
 
         // Earth orbit
-        game.earthMesh.position.x = 600 * Math.sin(game.time / revolutionSpeed);
+        game.earthMesh.position.x = 2.58 * game.distanceFactor * Math.sin(game.time / 41.5 * revolutionSpeed);
         // game.earthMesh.translateY(4 * Math.cos(game.time / 20));
-        game.earthMesh.position.z = 600 * Math.cos(game.time / revolutionSpeed);
+        game.earthMesh.position.z = 2.58 * game.distanceFactor * Math.cos(game.time / 41.5 * revolutionSpeed);
 
         // Mars orbit
-        game.marsMesh.position.x = 800 * Math.sin(game.time / revolutionSpeed);
+        game.marsMesh.position.x = 3.23 * game.distanceFactor * Math.sin(game.time / 78.1 * revolutionSpeed);
         // game.marsMesh.translateY(5 * Math.cos(game.time / 20));
-        game.marsMesh.position.z = 800 * Math.cos(game.time / revolutionSpeed);
+        game.marsMesh.position.z = 3.23 * game.distanceFactor * Math.cos(game.time / 78.1 * revolutionSpeed);
 
         // Jupiter orbit
-        game.jupiterMesh.position.x = 1400 * Math.sin(game.time / revolutionSpeed);
+        game.jupiterMesh.position.x = 21.61 * game.distanceFactor * Math.sin(game.time / 492.3 * revolutionSpeed);
         // game.jupiterMesh.translateY(6 * Math.cos(game.time / revolutionSpeed));
-        game.jupiterMesh.position.z = 1400 * Math.cos(game.time / revolutionSpeed);
+        game.jupiterMesh.position.z = 21.61 * game.distanceFactor * Math.cos(game.time / 492.3 * revolutionSpeed);
 
         // Saturn orbit
-        game.saturnMesh.position.x = 1600 * Math.sin(game.time / revolutionSpeed);
+        game.saturnMesh.position.x = 24.61 * game.distanceFactor * Math.sin(game.time / 1202.2 * revolutionSpeed);
         // game.saturnMesh.translateY(80 * Math.cos(game.time / revolutionSpeed));
-        game.saturnMesh.position.z = 1600 * Math.cos(game.time / revolutionSpeed);
+        game.saturnMesh.position.z = 24.61 * game.distanceFactor * Math.cos(game.time / 1202.2 * revolutionSpeed);
 
         // Saturn Ring orbit
         game.saturnRingMesh.position.set(game.saturnMesh.position.x, game.saturnMesh.position.y, game.saturnMesh.position.z);
 
         // Neptune orbit
-        game.uranusMesh.position.x = 1800 * Math.sin(game.time / revolutionSpeed);
+        game.uranusMesh.position.x = 50 * game.distanceFactor * Math.sin(game.time / 3484.1);
         // game.uranusMesh.translateY(90 * Math.cos(game.time / revolutionSpeed));
-        game.uranusMesh.position.z = 1800 * Math.cos(game.time / revolutionSpeed);
+        game.uranusMesh.position.z = 50 * game.distanceFactor * Math.cos(game.time / 3484.1);
 
         // Neptune Ring orbit
-        game.uranusRingMesh.position.set(game.neptuneMesh.position.x, game.neptuneMesh.position.y, game.neptuneMesh.position.z);
+        game.uranusRingMesh.position.set(game.uranusMesh.position.x, game.uranusMesh.position.y, game.uranusMesh.position.z);
 
         // Uranus orbit
-        game.neptuneMesh.position.x = 2000 * Math.sin(game.time / revolutionSpeed);
+        game.neptuneMesh.position.x = 77.72 * game.distanceFactor * Math.sin(game.time / 6835);
         // game.neptuneMesh.translateY(100 * Math.cos(game.time / revolutionSpeed));
-        game.neptuneMesh.position.z = 2000 * Math.cos(game.time / revolutionSpeed);
+        game.neptuneMesh.position.z = 77.72 * game.distanceFactor * Math.cos(game.time / 6835);
 
         // Pluto orbit
-        game.plutoMesh.position.x = 2400 * Math.sin(game.time / revolutionSpeed);
+        game.plutoMesh.position.x = 101.94 * game.distanceFactor * Math.sin(game.time / 10290.1);
         // game.plutoMesh.translateY(120 * Math.cos(game.time / revolutionSpeed));
-        game.plutoMesh.position.z = 2400 * Math.cos(game.time / revolutionSpeed);
+        game.plutoMesh.position.z = 101.94 * game.distanceFactor * Math.cos(game.time / 10290.1);
 
         // console.log(game.neptuneRingMesh.position);
 
@@ -334,8 +338,6 @@ class Game{
     }
 
     rotate() {
-        // Currently will not work, due to use of translation function for revolving, because rotation changes the direction that the meshes will move in when revolving
-
         const game = this;
 
         game.planets.forEach(planet => {
