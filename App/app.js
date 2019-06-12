@@ -55,7 +55,7 @@ class Game{
 
         this.asteroids = [];
         this.asteroidTexture = this.textureLoader.load('./assets/Asteroid_Texture.jpg');
-        for(var i = 0; i < 100; i += 1) {
+        for(var i = 0; i < 400; i += 1) {
             game.asteroids.push(new THREE.Mesh(
                 new THREE.SphereGeometry(10 * Math.random(), 5 * Math.random(), 5 * Math.random()),
                 new THREE.MeshPhongMaterial({map: game.asteroidTexture})
@@ -63,8 +63,8 @@ class Game{
 
             // Limit positions to belt area
             game.asteroids[i].position.y = (Math.random() * 10) - 5;
-            game.asteroids[i].position.x = (Math.random() * 1000) - 500;
-            game.asteroids[i].position.z = (Math.random() * 1000) - 500;
+            game.asteroids[i].position.x = (1100 * Math.sin(i * Math.PI / 200) + (Math.random() * 200 - 100));
+            game.asteroids[i].position.z = (1100 * Math.cos(i * Math.PI / 200) + (Math.random() * 200 - 100));
         }
 
         // Outer Planets
@@ -273,55 +273,55 @@ class Game{
         var revolutionSpeed = 65;
 
         // Mercury orbit
-        game.mercuryMesh.translateX(12 * Math.sin(game.time / revolutionSpeed));
+        game.mercuryMesh.position.x = 240 * Math.sin(game.time / 50);
         // game.mercuryMesh.translateY(1 * Math.cos(game.time / 10));
-        game.mercuryMesh.translateZ(12 * Math.cos(game.time / revolutionSpeed));
+        game.mercuryMesh.position.z = 240 * Math.cos(game.time / 50);
 
         // Venus orbit
-        game.venusMesh.translateX(20 * Math.sin(game.time / revolutionSpeed));
+        game.venusMesh.position.x = 400 * Math.sin(game.time / revolutionSpeed);
         // game.venusMesh.translateY(3 * Math.cos(game.time / 12));
-        game.venusMesh.translateZ(20 * Math.cos(game.time / revolutionSpeed));
+        game.venusMesh.position.z = 400 * Math.cos(game.time / revolutionSpeed);
 
         // Earth orbit
-        game.earthMesh.translateX(30 * Math.sin(game.time / revolutionSpeed));
+        game.earthMesh.position.x = 600 * Math.sin(game.time / revolutionSpeed);
         // game.earthMesh.translateY(4 * Math.cos(game.time / 20));
-        game.earthMesh.translateZ(30 * Math.cos(game.time / revolutionSpeed));
+        game.earthMesh.position.z = 600 * Math.cos(game.time / revolutionSpeed);
 
         // Mars orbit
-        game.marsMesh.translateX(40 * Math.sin(game.time / revolutionSpeed));
+        game.marsMesh.position.x = 800 * Math.sin(game.time / revolutionSpeed);
         // game.marsMesh.translateY(5 * Math.cos(game.time / 20));
-        game.marsMesh.translateZ(40 * Math.cos(game.time / revolutionSpeed));
+        game.marsMesh.position.z = 800 * Math.cos(game.time / revolutionSpeed);
 
         // Jupiter orbit
-        game.jupiterMesh.translateX(70 * Math.sin(game.time / revolutionSpeed));
+        game.jupiterMesh.position.x = 1400 * Math.sin(game.time / revolutionSpeed);
         // game.jupiterMesh.translateY(6 * Math.cos(game.time / revolutionSpeed));
-        game.jupiterMesh.translateZ(70 * Math.cos(game.time / revolutionSpeed));
+        game.jupiterMesh.position.z = 1400 * Math.cos(game.time / revolutionSpeed);
 
         // Saturn orbit
-        game.saturnMesh.translateX(80 * Math.sin(game.time / revolutionSpeed));
+        game.saturnMesh.position.x = 1600 * Math.sin(game.time / revolutionSpeed);
         // game.saturnMesh.translateY(80 * Math.cos(game.time / revolutionSpeed));
-        game.saturnMesh.translateZ(80 * Math.cos(game.time / revolutionSpeed));
+        game.saturnMesh.position.z = 1600 * Math.cos(game.time / revolutionSpeed);
 
         // Saturn Ring orbit
         game.saturnRingMesh.position.set(game.saturnMesh.position.x, game.saturnMesh.position.y, game.saturnMesh.position.z);
 
         // Neptune orbit
-        game.uranusMesh.translateX(90 * Math.sin(game.time / revolutionSpeed));
+        game.uranusMesh.position.x = 1800 * Math.sin(game.time / revolutionSpeed);
         // game.uranusMesh.translateY(90 * Math.cos(game.time / revolutionSpeed));
-        game.uranusMesh.translateZ(90 * Math.cos(game.time / revolutionSpeed));
+        game.uranusMesh.position.z = 1800 * Math.cos(game.time / revolutionSpeed);
 
         // Neptune Ring orbit
         game.uranusRingMesh.position.set(game.neptuneMesh.position.x, game.neptuneMesh.position.y, game.neptuneMesh.position.z);
 
         // Uranus orbit
-        game.neptuneMesh.translateX(100 * Math.sin(game.time / revolutionSpeed));
+        game.neptuneMesh.position.x = 2000 * Math.sin(game.time / revolutionSpeed);
         // game.neptuneMesh.translateY(100 * Math.cos(game.time / revolutionSpeed));
-        game.neptuneMesh.translateZ(100 * Math.cos(game.time / revolutionSpeed));
+        game.neptuneMesh.position.z = 2000 * Math.cos(game.time / revolutionSpeed);
 
         // Pluto orbit
-        game.plutoMesh.translateX(120 * Math.sin(game.time / revolutionSpeed));
+        game.plutoMesh.position.x = 2400 * Math.sin(game.time / revolutionSpeed);
         // game.plutoMesh.translateY(120 * Math.cos(game.time / revolutionSpeed));
-        game.plutoMesh.translateZ(120 * Math.cos(game.time / revolutionSpeed));
+        game.plutoMesh.position.z = 2400 * Math.cos(game.time / revolutionSpeed);
 
         // console.log(game.neptuneRingMesh.position);
 
