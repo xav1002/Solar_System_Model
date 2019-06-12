@@ -62,6 +62,7 @@ class Game{
             game.asteroids[i].position.y = (Math.random() * 10) - 5;
             game.asteroids[i].position.x = (Math.random() * 1000) - 500;
             game.asteroids[i].position.z = (Math.random() * 1000) - 500;
+            // game.asteroids[i].position.z = ()
         }
 
         // light
