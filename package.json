@@ -1,0 +1,24 @@
+{
+  "name": "Solar_System_Model",
+  "version": "1.0.0",
+  "description": "\"# Test\"  \"# Solar_System_Model\"",
+  "main": "TrackballControls.js",
+  "dependencies": {
+    "fbx2gltf": "^0.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xav1002/Solar_System_Model.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xav1002/Solar_System_Model/issues"
+  },
+  "homepage": "https://github.com/xav1002/Solar_System_Model#readme"
+}
