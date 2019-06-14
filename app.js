@@ -23,29 +23,33 @@ class Game{
 		this.controls.keys = [ 65, 83, 68 ];
 
         // sun
-        this.sunRadius = 100;
+        this.sunRadius = 43.22879;
+        // Actual: 432.2879
         this.sunGeometry = new THREE.SphereGeometry(this.sunRadius, 100, 100);
         this.sunTexture = this.textureLoader.load('./assets/Sun_Image.jpg');
         this.sunMaterial = new THREE.MeshPhongMaterial({map: this.sunTexture});
         this.sunMesh = new THREE.Mesh(this.sunGeometry, this.sunMaterial);
 
         // Inner Planets
-        this.mercuryGeometry = new THREE.SphereGeometry(10, 50, 50);
+        this.radiusFactor = 1.515959 * 2;
+        // Actual: 1.515959
+
+        this.mercuryGeometry = new THREE.SphereGeometry(1 * this.radiusFactor, 50, 50);
         this.mercuryTexture = this.textureLoader.load('./assets/Mercury_Texture.png');
         this.mercuryMaterial = new THREE.MeshPhongMaterial({map: this.mercuryTexture});
         this.mercuryMesh = new THREE.Mesh(this.mercuryGeometry, this.mercuryMaterial);
 
-        this.venusGeometry = new THREE.SphereGeometry(13, 50, 50);
+        this.venusGeometry = new THREE.SphereGeometry(2.48 * this.radiusFactor, 50, 50);
         this.venusTexture = this.textureLoader.load('./assets/Venus_Texture.jpg');
         this.venusMaterial = new THREE.MeshPhongMaterial({map: this.venusTexture});
         this.venusMesh = new THREE.Mesh(this.venusGeometry, this.venusMaterial);
 
-        this.earthGeometry = new THREE.SphereGeometry(15, 50, 50);
+        this.earthGeometry = new THREE.SphereGeometry(2.61 * this.radiusFactor, 50, 50);
         this.earthTexture = this.textureLoader.load('./assets/Earth_Texture.jpg');
         this.earthMaterial = new THREE.MeshPhongMaterial({map: this.earthTexture});
         this.earthMesh = new THREE.Mesh(this.earthGeometry, this.earthMaterial);
 
-        this.marsGeometry = new THREE.SphereGeometry(20, 50, 50);
+        this.marsGeometry = new THREE.SphereGeometry(1.39 * this.radiusFactor, 50, 50);
         this.marsTexture = this.textureLoader.load('./assets/Mars_Texture.jpg');
         this.marsMaterial = new THREE.MeshPhongMaterial({map: this.marsTexture});
         this.marsMesh = new THREE.Mesh(this.marsGeometry, this.marsMaterial);
@@ -63,41 +67,41 @@ class Game{
 
             // Limit positions to belt area
             game.asteroids[i].position.y = (Math.random() * 10) - 5;
-            game.asteroids[i].position.x = (1100 * Math.sin(i * Math.PI / 600) + (Math.random() * 600 - 300));
-            game.asteroids[i].position.z = (1100 * Math.cos(i * Math.PI / 600) + (Math.random() * 600 - 300));
+            game.asteroids[i].position.x = (800 * Math.sin(i * Math.PI / 600) + (Math.random() * 600 - 300));
+            game.asteroids[i].position.z = (800 * Math.cos(i * Math.PI / 600) + (Math.random() * 600 - 300));
         }
 
         // Outer Planets
-        this.jupiterGeometry = new THREE.SphereGeometry(40, 50, 50);
+        this.jupiterGeometry = new THREE.SphereGeometry(28.66 * this.radiusFactor, 50, 50);
         this.jupiterTexture = this.textureLoader.load('./assets/Jupiter_Texture.jpg');
         this.jupiterMaterial = new THREE.MeshPhongMaterial({map: this.jupiterTexture});
         this.jupiterMesh = new THREE.Mesh(this.jupiterGeometry, this.jupiterMaterial);
 
-        this.saturnGeometry = new THREE.SphereGeometry(35, 50, 50);
+        this.saturnGeometry = new THREE.SphereGeometry(23.87 * this.radiusFactor, 50, 50);
         this.saturnTexture = this.textureLoader.load('./assets/Saturn_Texture.jpg');
         this.saturnMaterial = new THREE.MeshPhongMaterial({map: this.saturnTexture});
         this.saturnMesh = new THREE.Mesh(this.saturnGeometry, this.saturnMaterial);
 
-        this.saturnRingGeo = new THREE.RingGeometry(75, 30, 30);
+        this.saturnRingGeo = new THREE.RingGeometry(23.87 * 1.05 * this.radiusFactor, 23.87 * 1.25 * this.radiusFactor, 30);
         this.saturnRingMat = new THREE.MeshPhongMaterial({side: THREE.DoubleSide});
         this.saturnRingMesh = new THREE.Mesh(this.saturnRingGeo, this.saturnRingMat);
         this.saturnRingMesh.rotation.x = Math.PI / 2;
 
-        this.uranusGeometry = new THREE.SphereGeometry(40, 50, 50);
+        this.uranusGeometry = new THREE.SphereGeometry(10.4 * this.radiusFactor, 50, 50);
         this.uranusTexture = this.textureLoader.load('./assets/Uranus_Texture.jpg');
         this.uranusMaterial = new THREE.MeshPhongMaterial({map: this.uranusTexture});
         this.uranusMesh = new THREE.Mesh(this.uranusGeometry, this.uranusMaterial);
 
-        this.uranusRingGeo = new THREE.RingGeometry(75, 30, 30);
+        this.uranusRingGeo = new THREE.RingGeometry(10.4 * 1.05 * this.radiusFactor, 10.4 * 1.25 * this.radiusFactor, 60);
         this.uranusRingMat = new THREE.MeshPhongMaterial({side: THREE.DoubleSide});
         this.uranusRingMesh = new THREE.Mesh(this.uranusRingGeo, this.uranusRingMat);
 
-        this.neptuneGeometry = new THREE.SphereGeometry(40, 50, 50);
+        this.neptuneGeometry = new THREE.SphereGeometry(10.09 * this.radiusFactor, 50, 50);
         this.neptuneTexture = this.textureLoader.load('./assets/Neptune_Texture.jpg');
         this.neptuneMaterial = new THREE.MeshPhongMaterial({map: this.neptuneTexture});
         this.neptuneMesh = new THREE.Mesh(this.neptuneGeometry, this.neptuneMaterial);
 
-        this.plutoGeometry = new THREE.SphereGeometry(10, 50, 50);
+        this.plutoGeometry = new THREE.SphereGeometry(.49 * this.radiusFactor, 50, 50);
         this.plutoTexture = this.textureLoader.load('./assets/Pluto_Texture.jpg');
         this.plutoMaterial = new THREE.MeshPhongMaterial({map: this.plutoTexture});
         this.plutoMesh = new THREE.Mesh(this.plutoGeometry, this.plutoMaterial);
@@ -173,17 +177,23 @@ class Game{
         this.planets = [];
 
         this.distanceFactor;
+        this.distanceFactorShift;
 
         this.init();
 
     }
 
     init() {
+        // The distance proportions in comparison to the volumes of the planets and the sun are extreme; it is hard to see the planets (due to their size) the distances between the planets and sun
+        // are similar to their actual proportions. So, the distance between the planets and the sun will be decreased, and all the planets will be shifted slightly away from the sun to provide a
+        // representation that can be more clearly interpreted
+
         const game = this;
 
         console.log(game.camera, game.scene, game.sunMesh);
 
         game.scene.add(game.sunMesh);
+        game.scene.add(game.sunLight);
 
         game.lightOnSun.forEach(function(lightGroup) {
             lightGroup.forEach(function(light) {
@@ -213,51 +223,54 @@ class Game{
         );
 
         // Planet Initial Positions
-        game.distanceFactor = 120;
+        game.distanceFactor = 75;
+        // Actual: 36000
 
-        var mercuryPosX = 1 * game.distanceFactor;
+        game.distanceFactorShift = 50;
+
+        var mercuryPosX = 1 * game.distanceFactor + game.distanceFactorShift;
         var mercuryPosY = 0;
         var mercuryPosZ = 0;
         game.mercuryMesh.position.set(mercuryPosX, mercuryPosY, mercuryPosZ);
 
-        var venusPosX = 1.87 * game.distanceFactor;
+        var venusPosX = 1.87 * game.distanceFactor + game.distanceFactorShift;
         var venusPosY = 0;
         var venusPosZ = 0;
         game.venusMesh.position.set(venusPosX, venusPosY, venusPosZ);
 
-        var earthPosX = 2.58 * game.distanceFactor;
+        var earthPosX = 2.58 * game.distanceFactor + game.distanceFactorShift;
         var earthPosY = 0;
         var earthPosZ = 0;
         game.earthMesh.position.set(earthPosX, earthPosY, earthPosZ);
 
-        var marsPosX = 3.23 * game.distanceFactor;
+        var marsPosX = 3.23 * game.distanceFactor + game.distanceFactorShift;
         var marsPosY = 0;
         var marsPosZ = 0;
         game.marsMesh.position.set(marsPosX, marsPosY, marsPosZ);
 
-        var jupiterPosX = 21.61 * game.distanceFactor;
+        var jupiterPosX = 21.61 * game.distanceFactor + game.distanceFactorShift;
         var jupiterPosY = 0;
         var jupiterPosZ = 0;
         game.jupiterMesh.position.set(jupiterPosX, jupiterPosY, jupiterPosZ);
 
-        var saturnPosX = 24.61 * game.distanceFactor;
+        var saturnPosX = 24.61 * game.distanceFactor + game.distanceFactorShift;
         var saturnPosY = 0;
         var saturnPosZ = 0;
         game.saturnMesh.position.set(saturnPosX, saturnPosY, saturnPosZ);
         game.saturnRingMesh.position.set(saturnPosX, saturnPosY, saturnPosZ);
 
-        var uranusPosX = 50 * game.distanceFactor;
+        var uranusPosX = 50 * game.distanceFactor + game.distanceFactorShift;
         var uranusPosY = 0;
         var uranusPosZ = 0;
         game.uranusMesh.position.set(uranusPosX, uranusPosY, uranusPosZ);
         game.uranusRingMesh.position.set(uranusPosX, uranusPosY, uranusPosZ);
 
-        var neptunePosX = 77.72 * game.distanceFactor;
+        var neptunePosX = 77.72 * game.distanceFactor + game.distanceFactorShift;
         var neptunePosY = 0;
         var neptunePosZ = 0;
         game.neptuneMesh.position.set(neptunePosX, neptunePosY, neptunePosZ);
 
-        var plutoPosX = 101.94 * game.distanceFactor;
+        var plutoPosX = 101.94 * game.distanceFactor + game.distanceFactorShift;
         var plutoPosY = 0;
         var plutoPosZ = 0;
         game.plutoMesh.position.set(plutoPosX, plutoPosY, plutoPosZ);
