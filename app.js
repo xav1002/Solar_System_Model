@@ -31,7 +31,7 @@ class Game{
         this.sunMesh = new THREE.Mesh(this.sunGeometry, this.sunMaterial);
 
         // Inner Planets
-        this.radiusFactor = 1.515959 * 2;
+        this.radiusFactor = 1.515959 * .9;
         // Actual: 1.515959
 
         this.mercuryGeometry = new THREE.SphereGeometry(1 * this.radiusFactor, 50, 50);
@@ -290,59 +290,58 @@ class Game{
         var revolutionSpeed = 2;
 
         // Mercury orbit
-        game.mercuryMesh.position.x = 1 * game.distanceFactor * Math.sin(game.time / 10 * revolutionSpeed);
+        game.mercuryMesh.position.x = ((1 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 10);
         // game.mercuryMesh.translateY(1 * Math.cos(game.time / 10));
-        game.mercuryMesh.position.z = 1 * game.distanceFactor * Math.cos(game.time / 10 * revolutionSpeed);
+        game.mercuryMesh.position.z = ((1 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 10);
 
         // Venus orbit
-        game.venusMesh.position.x = 1.87 * game.distanceFactor * Math.sin(game.time / 25.5 * revolutionSpeed);
+        game.venusMesh.position.x = ((1.87 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 25.5);
         // game.venusMesh.translateY(3 * Math.cos(game.time / 12));
-        game.venusMesh.position.z = 1.87 * game.distanceFactor * Math.cos(game.time / 25.5 * revolutionSpeed);
+        game.venusMesh.position.z = ((1.87 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 25.5);
 
         // Earth orbit
-        game.earthMesh.position.x = 2.58 * game.distanceFactor * Math.sin(game.time / 41.5 * revolutionSpeed);
+        game.earthMesh.position.x = ((2.58 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 41.5);
         // game.earthMesh.translateY(4 * Math.cos(game.time / 20));
-        game.earthMesh.position.z = 2.58 * game.distanceFactor * Math.cos(game.time / 41.5 * revolutionSpeed);
+        game.earthMesh.position.z = ((2.58 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 41.5);
 
         // Mars orbit
-        game.marsMesh.position.x = 3.23 * game.distanceFactor * Math.sin(game.time / 78.1 * revolutionSpeed);
+        game.marsMesh.position.x = ((3.23 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 78.1);
         // game.marsMesh.translateY(5 * Math.cos(game.time / 20));
-        game.marsMesh.position.z = 3.23 * game.distanceFactor * Math.cos(game.time / 78.1 * revolutionSpeed);
+        game.marsMesh.position.z = ((3.23 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 78.1);
 
         // Jupiter orbit
-        game.jupiterMesh.position.x = 21.61 * game.distanceFactor * Math.sin(game.time / 492.3 * revolutionSpeed);
+        game.jupiterMesh.position.x = ((21.61 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 492.3);
         // game.jupiterMesh.translateY(6 * Math.cos(game.time / revolutionSpeed));
-        game.jupiterMesh.position.z = 21.61 * game.distanceFactor * Math.cos(game.time / 492.3 * revolutionSpeed);
+        game.jupiterMesh.position.z = ((21.61 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 492.3);
 
         // Saturn orbit
-        game.saturnMesh.position.x = 24.61 * game.distanceFactor * Math.sin(game.time / 1202.2 * revolutionSpeed);
+        game.saturnMesh.position.x = ((24.61 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 1202.2);
         // game.saturnMesh.translateY(80 * Math.cos(game.time / revolutionSpeed));
-        game.saturnMesh.position.z = 24.61 * game.distanceFactor * Math.cos(game.time / 1202.2 * revolutionSpeed);
+        game.saturnMesh.position.z = ((24.61 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 1202.2);
 
         // Saturn Ring orbit
         game.saturnRingMesh.position.set(game.saturnMesh.position.x, game.saturnMesh.position.y, game.saturnMesh.position.z);
 
         // Neptune orbit
-        game.uranusMesh.position.x = 50 * game.distanceFactor * Math.sin(game.time / 3484.1);
+        game.uranusMesh.position.x = ((50 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 3484.1);
         // game.uranusMesh.translateY(90 * Math.cos(game.time / revolutionSpeed));
-        game.uranusMesh.position.z = 50 * game.distanceFactor * Math.cos(game.time / 3484.1);
+        game.uranusMesh.position.z = ((50 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 3484.1);
 
         // Neptune Ring orbit
         game.uranusRingMesh.position.set(game.uranusMesh.position.x, game.uranusMesh.position.y, game.uranusMesh.position.z);
 
         // Uranus orbit
-        game.neptuneMesh.position.x = 77.72 * game.distanceFactor * Math.sin(game.time / 6835);
+        game.neptuneMesh.position.x = ((77.72 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 6835);
         // game.neptuneMesh.translateY(100 * Math.cos(game.time / revolutionSpeed));
-        game.neptuneMesh.position.z = 77.72 * game.distanceFactor * Math.cos(game.time / 6835);
+        game.neptuneMesh.position.z = ((77.72 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 6835);
 
         // Pluto orbit
-        game.plutoMesh.position.x = 101.94 * game.distanceFactor * Math.sin(game.time / 10290.1);
+        game.plutoMesh.position.x = ((101.94 * game.distanceFactor) + game.distanceFactorShift) * Math.sin(game.time / 10290.1);
         // game.plutoMesh.translateY(120 * Math.cos(game.time / revolutionSpeed));
-        game.plutoMesh.position.z = 101.94 * game.distanceFactor * Math.cos(game.time / 10290.1);
+        game.plutoMesh.position.z = ((101.94 * game.distanceFactor) + game.distanceFactorShift) * Math.cos(game.time / 10290.1);
 
-        // console.log(game.neptuneRingMesh.position);
 
-        game.time += 1;
+        game.time += Math.PI / 8;
 
         // Eventually the game.time will get so big that it will be difficult for the computer to keep counting up, need way to decrease without a blip in the animation
         // if(game.time > 620) {
@@ -353,9 +352,7 @@ class Game{
     rotate() {
         const game = this;
 
-        game.planets.forEach(planet => {
-            planet.rotation.y += 1;
-        })
+        game.mercuryMesh.rotation.y
     }
 
     animate(){
