@@ -8,7 +8,7 @@ class Game{
         this.spaceTexture = this.textureLoader.load('assets/Hubble_Image.jpg');
         this.scene.background = this.spaceTexture;
 
-        this.renderer = new THREE.WebGLRenderer();
+        this.renderer = new THREE.WebGLRenderer({antialias: true});
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
 
@@ -35,7 +35,7 @@ class Game{
         // Actual: 1.515959
 
         this.mercuryGeometry = new THREE.SphereGeometry(1 * this.radiusFactor, 50, 50);
-        this.mercuryTexture = this.textureLoader.load('./assets/Mercury_Texture.png');
+        this.mercuryTexture = this.textureLoader.load('./assets/Mercury_Texture.jpg');
         this.mercuryMaterial = new THREE.MeshPhongMaterial({map: this.mercuryTexture});
         this.mercuryMesh = new THREE.Mesh(this.mercuryGeometry, this.mercuryMaterial);
 
@@ -368,3 +368,5 @@ class Game{
         game.renderer.render(game.scene, game.camera);
     }
 }
+
+export default Game;
