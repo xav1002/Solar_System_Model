@@ -6,7 +6,7 @@ import {camera} from './constructor';
 import {controls} from './constructor';
 
 function animate(){
-    requestAnimationFrame( animate );
+    requestAnimationFrame( function() {animate()} );
 
     controls.update();
 

@@ -10,6 +10,7 @@ scene.background = spaceTexture;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 export {renderer};
 
 var controls = new THREE.TrackballControls(camera, renderer.domElement);
@@ -113,3 +114,5 @@ export {asteroids};
 
 export var distanceFactor = 75;
 export var distanceFactorShift = 50;
+
+console.log('loaded');
