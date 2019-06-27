@@ -6,13 +6,13 @@ import {camera} from './constructor';
 import {controls} from './constructor';
 
 function animate(){
-    requestAnimationFrame( function(){ animate() });
+    requestAnimationFrame( animate );
+
+    controls.update();
 
     revolve();
 
     rotate();
-
-    controls.update();
 
     renderer.render(scene, camera);
 }
