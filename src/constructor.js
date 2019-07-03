@@ -101,7 +101,7 @@ export const plutoMesh = new THREE.Mesh(plutoGeometry, plutoMaterial);
 const asteroids = [];
 for(var i = 0; i < 1200; i += 1) {
     asteroids.push(new THREE.Mesh(
-        new THREE.SphereGeometry(10 * Math.random(), 5 * Math.random(), 5 * Math.random()),
+        new THREE.SphereGeometry(3 * Math.random(), 5 * Math.random(), 5 * Math.random()),
         new THREE.MeshPhongMaterial({map: asteroidTexture})
     ));
 
