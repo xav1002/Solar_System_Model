@@ -26,7 +26,7 @@ class Game{
         this.sunRadius = 43.22879;
         // Actual: 432.2879
         this.sunGeometry = new THREE.SphereGeometry(this.sunRadius, 100, 100);
-        this.sunTexture = this.textureLoader.load('./assets/Sun_Image.jpg');
+        this.sunTexture = this.textureLoader.load('./assets/Sun_Texture.jpg');
         this.sunMaterial = new THREE.MeshPhongMaterial({map: this.sunTexture});
         this.sunMesh = new THREE.Mesh(this.sunGeometry, this.sunMaterial);
 
@@ -368,5 +368,3 @@ class Game{
         game.renderer.render(game.scene, game.camera);
     }
 }
-
-export default Game;

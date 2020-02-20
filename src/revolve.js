@@ -12,6 +12,10 @@ import {uranusRingMesh} from './constructor';
 import {neptuneMesh} from './constructor';
 import {plutoMesh} from './constructor';
 
+/**
+ * Calcaulations made with ratios of time, units are Earth Days
+ */
+
 var time = 0;
 
 function revolve() {

@@ -10,6 +10,7 @@ scene.background = spaceTexture;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 export {renderer};
 
 var controls = new THREE.TrackballControls(camera, renderer.domElement);
@@ -100,7 +101,7 @@ export const plutoMesh = new THREE.Mesh(plutoGeometry, plutoMaterial);
 const asteroids = [];
 for(var i = 0; i < 1200; i += 1) {
     asteroids.push(new THREE.Mesh(
-        new THREE.SphereGeometry(10 * Math.random(), 5 * Math.random(), 5 * Math.random()),
+        new THREE.SphereGeometry(Math.random(), 5 * Math.random(), 5 * Math.random()),
         new THREE.MeshPhongMaterial({map: asteroidTexture})
     ));
 
@@ -113,3 +114,5 @@ export {asteroids};
 
 export var distanceFactor = 75;
 export var distanceFactorShift = 50;
+
+console.log('loaded');
